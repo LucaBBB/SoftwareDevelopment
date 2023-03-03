@@ -1,5 +1,27 @@
 "use strict";
 
+var inlineDefault = new kendo.data.HierarchicalDataSource({
+    data: [
+        {
+            text: "Meteo"
+        },
+        {            
+            text: "Home"
+        }
+    ]
+});
+
+$("#menu").kendoMenu({
+    dataSource: inlineDefault,
+    select: onSelect
+});
+
+function onSelect(e) {
+    let nextPage = $(e.item).children(".k-link").text();
+    location.href = `${nextPage.toLowerCase()}.html`;
+}
+
+
 const citiesList = [
     "Torino",
     "Milano",
